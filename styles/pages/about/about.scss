@@ -1,0 +1,28 @@
+.about {
+  @extend %page;
+
+  // background: $color-cadet-blue;
+  // color: $color-bright-gray;
+}
+
+.about__wrapper {
+  padding-top: 10rem;
+}
+
+.about__title {
+  @extend %title-100;
+  font-size: 9.5rem;
+  line-height: 0;
+
+  margin: auto;
+  max-width: 126rem;
+  text-align: center;
+  vertical-align: top;
+  span span {
+    line-height: 1;
+  }
+
+  @include media("<phone") {
+    max-width: 67.7rem;
+  }
+}

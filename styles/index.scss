@@ -1,0 +1,42 @@
+@import "./base/reset";
+
+@import "./utils/variables";
+@import "./utils/functions";
+@import "./utils/mixins";
+@import "./utils/vendors";
+@import "./utils/responsive";
+
+@import "./shared/descriptions.scss";
+@import "./shared/titles.scss";
+@import "./shared/vertical-titles.scss";
+@import "./shared/links";
+@import "./shared/pages";
+
+// Import base and utility styles
+@import "./base/fonts";
+@import "./base/base";
+
+//Pages about section
+@import "./pages/about/about";
+@import "./pages/about/content";
+@import "./pages/about/gallery";
+@import "./pages/about/highlight";
+
+//Pages preloader section
+@import "./components/preloader";
+
+//Pages navigation section
+@import "./layout/navigation";
+
+// Pages collections section
+@import "./pages/collections/collections";
+@import "./pages/collections/content";
+@import "./pages/collections/gallery";
+
+// Pages detail section
+@import "./pages/detail/detail";
+@import "./pages/detail/information";
+
+// Pages home section
+@import "./pages/home/home";
+@import "./pages/home/gallery";

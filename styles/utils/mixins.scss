@@ -1,0 +1,86 @@
+/**
+
+@function z($name)
+
+This function returns the position of an item in a list.
+
+It takes one parameter - $name - that is the name of the item, and it should match the item in the list.
+
+If there is an item found in the list with the given name, the index of the item is returned as an integer plus 1.
+
+If there is no item found, a warning is triggered and null is returned instead.
+*/
+@function z($name) {
+  @if index($z-indexes, $name) {
+    @return (length($z-indexes) - ($z-indexes, $name)) + 1;
+  } @else {
+    @warn 'There is no item "#{$name}" in this list; Choose one of: #{$z-indexes}';
+
+    @return null;
+  }
+}
+
+
+
+/**
+
+  %cover
+  Provides styling for full width and height elements.
+  */
+%cover {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+/**
+
+  %center
+  Aligns children horizontally and vertically in the middle of the parent element.
+  */
+%center {
+  align-items: center;
+  justify-content: center;
+  // text-align: center;
+  display: flex;
+}
+/**
+
+  @mixin placeholder
+  Generates placeholder rules used when styling inputs on browsers with limited HTML5 support.
+  */
+@mixin placeholder {
+  &.placeholder {
+    @content;
+  }
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+/**
+
+  @mixin ratio($height, $width)
+  Uses padding-top to create an aspect ratio for the element
+  based on the provided $height and $width variables.
+  */
+@mixin ratio($height, $width) {
+  font-size: 0;
+  overflow: hidden;
+  position: relative;
+  &:after {
+    content: "";
+    display: inline-block;
+    padding-top: $width / $height * 100;
+    width: 100%;
+  }
+}

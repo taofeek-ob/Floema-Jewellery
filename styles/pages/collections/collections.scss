@@ -1,0 +1,39 @@
+.collections {
+  pointer-events: none;
+  @extend %page;
+
+  z-index: 0;
+
+
+}
+.collections__wrapper {
+  @extend %cover;
+  overflow: hidden;
+}
+
+.collections__titles {
+  @extend %vertical-titles;
+
+  transition: transform 1s ease;
+
+  @include media('<phone') {
+    display: none;
+  }
+}
+
+.collections__titles__label {
+  @extend %vertical-titles__label;
+}
+
+.collections__titles__title {
+  @extend %vertical-titles__title;
+}
+
+.colllections__button{
+  position: absolute;
+  left:50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  height: 63.1rem;
+  width: 44.7rem;
+}

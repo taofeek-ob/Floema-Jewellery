@@ -1,0 +1,43 @@
+extends ../base.pug
+
+block variables
+  - var template ='collections'
+
+block content
+  .collections(data-background='#bc978c' data-color='#f9f1e7')
+    .collections__wrapper
+      .collections__titles
+        each collection, index in collections
+          .collections__titles__label!=`${home.data.collection}<br>${Numbers(index)}`
+          .collections__titles__title=collection.title
+
+        each collection, index in collections
+          .collections__titles__label!=`${home.data.collection}<br>${Numbers(index)}`
+          .collections__titles__title=collection.title
+
+        each collection, index in collections
+          .collections__titles__label!=`${home.data.collection}<br>${Numbers(index)}`
+          .collections__titles__title=collection.title
+
+      .collections__gallery
+        .collections__gallery__wrapper
+          each collection, index in collections
+            each product in collection.products
+              a.collections__gallery__link(href=Link(product.products_product))
+                figure.collections__gallery__media(data-index=index)
+                  img.collections__gallery__media__image(data-src=product.products_product.data.product.url alt=product.products_product.data.product.alt)
+
+      .collections__content
+        each collection, index in collections
+          article.collections__article(class=`${index === 0 ?"collections__article--active" : ""}`)
+            h2.collections__article__title=`${collection.title} ${home.data.collection}`
+            p.collections__article__description=collection.description
+
+      .collections__mobile
+        each collection, index in collections
+          .collections__mobile__item
+            .collections__mobile__label!=`${home.data.collection} <br> ${Numbers(index)}`
+            .collections__mobile__title=collection.title
+
+
+

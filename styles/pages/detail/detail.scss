@@ -1,0 +1,41 @@
+.detail {
+  @extend %center;
+  @extend %page;
+
+  // background: $color-quicksand;
+  // color: $color-quarter-spanish-white;
+
+  @include media("<phone") {
+    height: auto;
+  }
+}
+
+.detail__wrapper {
+  align-items: center;
+  display: flex;
+
+  @include media("<phone") {
+    display: block;
+    margin: auto;
+    padding: 15rem 0 31.5rem;
+    width: 100%;
+  }
+}
+
+.detail__media {
+  position: relative;
+  height: 78.2rem;
+  width: 55.4rem;
+
+  @include media("<phone") {
+    height: 93.4rem;
+    margin: 0 auto 7.8rem;
+    width: 66.1rem;
+  }
+}
+
+.detail__media__image {
+  @extend %cover;
+
+  object-fit: cover;
+}

@@ -1,0 +1,17 @@
+# Ignore all .log files
+*.log
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore .env file
+.env
+
+# Ignore public folder
+public/
+
+# Ignore .vscode folder
+.vscode/
+
+# Ignore .editorconfig file
+.editorconfig

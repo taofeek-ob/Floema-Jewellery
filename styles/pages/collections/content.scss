@@ -1,0 +1,58 @@
+.collections__content {
+  @extend %cover;
+
+  @include media('<phone') {
+    display: none;
+  }
+}
+
+.collections__article {
+  position: absolute;
+  left: 8rem;
+  bottom: 8rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+
+  &--active {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+}
+
+.collections__article__title {
+  @extend %title-60;
+}
+
+.collections__article__description {
+  @extend %description-16;
+
+  max-width: 46rem;
+}
+
+.collections__mobile {
+  display: none;
+  position: absolute;
+  bottom: 5rem;
+
+  @include media('<phone') {
+    display: flex;
+  }
+}
+
+.collections__mobile__item {
+  padding-left: 5rem;
+  width: 100vw;
+}
+
+.collections__mobile__item__label {
+  font-size: 2rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.collections__mobile__item__title {
+  font-family: $font-george-x;
+  font-size: 12rem;
+}
+
+

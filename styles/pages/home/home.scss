@@ -1,0 +1,75 @@
+.home {
+  @extend %center;
+  @extend %page;
+
+  text-align: center;
+  &:before,
+  &:after {
+    content: ""; // without this line, the section will not to be rendered
+    height: 24rem;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &:before {
+    background: linear-gradient(
+      to bottom,
+      $color-contessa 0%,
+      rgba($color-contessa, 0) 100%
+    );
+    top: 0;
+  }
+
+  &:after {
+    background: linear-gradient(
+      to top,
+      $color-contessa 0%,
+      rgba($color-contessa, 0) 100%
+    );
+    bottom: 0;
+  }
+}
+
+.home__wrapper {
+}
+
+.home__titles {
+  @extend %vertical-titles;
+}
+
+.home__titles__label {
+  @extend %vertical-titles__label;
+}
+
+.home__titles__title {
+  @extend %vertical-titles__title;
+}
+
+.home__link {
+  @extend %description-14;
+
+  align-items: center;
+  bottom: 5rem;
+  display: flex;
+  height: 6rem;
+  left: 50%;
+  letter-spacing: 0.05rem;
+  position: absolute;
+  width: 28.8rem;
+  justify-content: center;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  @include media("<phone") {
+    bottom: 7.5rem;
+    height: 13.7rem;
+    width: 55rem;
+  }
+}
+
+.home__link__icon {
+  @extend %cover;
+}
