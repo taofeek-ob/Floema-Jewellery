@@ -5,9 +5,11 @@ import Page from 'classes/page';
 export default class Detail extends Page {
   constructor() {
     super({
+
       id: 'detail',
       element: '.detail',
       elements: {
+        wrapper: ".detail__wrapper",
         button: '.detail__button',
       },
     });

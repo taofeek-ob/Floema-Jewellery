@@ -15,24 +15,18 @@ export default class Media {
       y: 0,
     };
 
-
     this.createTexture();
     this.createProgram();
     this.createMesh();
     this.createBounds({
       sizes: this.sizes,
     });
-
   }
-
-
-
-
 
   createTexture() {
     const image = this.element;
 
-    this.texture = window.TEXTURES[image.getAttribute('data-src')];
+    this.texture = window.TEXTURES[image.getAttribute("data-src")];
   }
 
   createProgram() {
@@ -114,7 +108,6 @@ export default class Media {
   }
 
   update(scroll, speed) {
-
     this.updateX(scroll.x);
     this.updateY(scroll.y);
 
@@ -136,14 +129,37 @@ export default class Media {
    */
 
   show() {
+
     GSAP.fromTo(
       this.program.uniforms.uAlpha,
       {
         value: 0,
       },
       {
+        duration: 2,
+        ease: "expo.inOut",
+
         value: 0.4,
-      }
+      }, "start"
+    );
+
+    GSAP.fromTo(
+
+      this.mesh.position,
+      {
+        z: GSAP.utils.random(2,7),
+      },
+      {
+        duration: 10,
+        ease: "expo.inOut",
+        z: 0,
+      },
+      // position parameter
+  () => {
+    let delay = GSAP.utils.random(0, 1.5);
+
+    return delay;
+  }
     );
   }
   hide() {

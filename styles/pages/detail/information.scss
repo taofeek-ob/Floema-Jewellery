@@ -2,6 +2,7 @@
   padding-left: 8.2rem;
 
   @include media("<phone") {
+    margin-block-start: 20rem;
     padding-left: 4rem;
   }
 }

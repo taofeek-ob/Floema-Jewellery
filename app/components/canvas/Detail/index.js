@@ -134,10 +134,11 @@ export default class {
       this.y * this.sizes.height;
   }
 
-  update() {
+  update(scroll) {
     this.updateX();
     this.updateY();
-
+    const y = scroll.current / window.innerHeight;
+    this.mesh.position.y = y * this.sizes.height;
   }
 
   /**

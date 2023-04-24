@@ -7,6 +7,12 @@ import Navigation from "./components/navigation";
 import NormalizeWheel from "normalize-wheel";
 class App {
   constructor() {
+
+     this.y = {
+      start: 0,
+      distance: 0,
+      end: 0,
+    };
     this.createContent();
 
     this.createCanvas();
@@ -109,14 +115,30 @@ class App {
   }
 
   onTouchDown(event) {
+     this.isDown = true;
+ this.y.start = event.touches ? event.touches[0].clientY : event.clientY;
+    const normalizedWheel = NormalizeWheel(event);
+
     if (this.canvas && this.canvas.onTouchDown) {
       this.canvas.onTouchDown(event);
+    }
+
+    if (this.page && this.page.onTouchDown) {
+      this.page.onTouchDown({y:this.y});
     }
   }
 
   onTouchMove(event) {
+      if (!this.isDown) return;
+    const y = event.touches ? event.touches[0].clientY : event.clientY;
+  this.y.end = y;
+
+
     if (this.canvas && this.canvas.onTouchMove) {
       this.canvas.onTouchMove(event);
+    }
+    if (this.page && this.page.onTouchMove) {
+      this.page.onTouchMove({y:this.y});
     }
   }
 
@@ -126,8 +148,19 @@ class App {
    * @param {*} event
    */
   onTouchUp(event) {
+     this.isDown = false;
+
+      const y = event.changedTouches
+      ? event.changedTouches[0].clientY
+      : event.clientY;
+
+      this.y.end = y;
     if (this.canvas && this.canvas.onTouchUp) {
       this.canvas.onTouchUp(event);
+    }
+    if (this.page && this.page.onTouchUp) {
+
+      this.page.onTouchUp({y: this.y,});
     }
   }
 
@@ -189,7 +222,8 @@ class App {
     if (isTouchDevice) {
         window.addEventListener("touchstart", this.onTouchDown.bind(this));
         window.addEventListener("touchmove", this.onTouchMove.bind(this));
-        window.addEventListener("touchend", this.onTouchUp.bind(this));
+      window.addEventListener("touchend", this.onTouchUp.bind(this));
+
     } else {
         window.addEventListener("mousedown", this.onTouchDown.bind(this));
         window.addEventListener("mousemove", this.onTouchMove.bind(this));

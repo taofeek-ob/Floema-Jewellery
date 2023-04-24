@@ -45,6 +45,13 @@ export default class Page {
       limit: 0,
     };
 
+    this.position = {
+      y: 0,
+    };
+
+    this.current = {
+      y: 0,
+    };
     each(this.selectorChildren, (entry, key) => {
       if (
         entry instanceof window.HTMLElement ||
@@ -180,7 +187,20 @@ export default class Page {
   }
 
   onWheel({ pixelY }) {
+
+
     this.scroll.target += pixelY;
+  }
+  onTouchUp( {y} ) {
+
+  }
+  onTouchDown({y}) {
+
+
+  }
+  onTouchMove({ y }) {
+    const yDistance = y.start - y.end;
+    this.scroll.target = this.scroll.current - yDistance;
   }
 
   // Loop
@@ -208,6 +228,7 @@ export default class Page {
         this.transformPrefix
       ] = `translateY(-${this.scroll.current}px)`;
     }
+
   }
 
   // Listeners
