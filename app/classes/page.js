@@ -192,15 +192,17 @@ export default class Page {
     this.scroll.target += pixelY;
   }
   onTouchUp( {y} ) {
-
+    const yDistance = y.start - y.end;
+    this.scroll.target = this.scroll.current - yDistance;
   }
   onTouchDown({y}) {
 
 
   }
   onTouchMove({ y }) {
+
     const yDistance = y.start - y.end;
-    this.scroll.target = this.scroll.current - yDistance;
+    this.scroll.target = this.scroll.current + yDistance;
   }
 
   // Loop

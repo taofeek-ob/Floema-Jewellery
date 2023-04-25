@@ -115,7 +115,8 @@ class App {
   }
 
   onTouchDown(event) {
-     this.isDown = true;
+    this.isDown = true;
+
  this.y.start = event.touches ? event.touches[0].clientY : event.clientY;
     const normalizedWheel = NormalizeWheel(event);
 
@@ -129,8 +130,10 @@ class App {
   }
 
   onTouchMove(event) {
-      if (!this.isDown) return;
-    const y = event.touches ? event.touches[0].clientY : event.clientY;
+
+    if (!this.isDown) return;
+
+    const y = event.touches ? event.changedTouches[0].clientY : event.clientY;
   this.y.end = y;
 
 
@@ -222,7 +225,7 @@ class App {
     if (isTouchDevice) {
         window.addEventListener("touchstart", this.onTouchDown.bind(this));
         window.addEventListener("touchmove", this.onTouchMove.bind(this));
-      window.addEventListener("touchend", this.onTouchUp.bind(this));
+      // window.addEventListener("touchend", this.onTouchUp.bind(this));
 
     } else {
         window.addEventListener("mousedown", this.onTouchDown.bind(this));
