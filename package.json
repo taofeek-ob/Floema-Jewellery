@@ -6,7 +6,8 @@
     "backend:development": "nodemon app.js -e js,pug",
     "frontend:build": "webpack --progress --config webpack.config.build.js",
     "frontend:development": "webpack serve --progress --config webpack.config.development.js",
-    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\""
+    "start": "concurrently --kill-others \"npm run backend:development\" \"npm run frontend:development\"",
+        "build": "concurrently --kill-others \"npm run backend:build\" \"npm run frontend:build\""
   },
   "author": "Taofeek Bakare",
   "license": "ISC",
